@@ -1,0 +1,81 @@
+AWSTemplateFormatVersion: '2010-09-09'
+
+Resources:
+  CloudFrontOriginAccessControl:
+    Type: AWS::CloudFront::OriginAccessControl
+    Properties:
+      OriginAccessControlConfig:
+        Description: An optional description for the origin access control
+        Name: ExampleOAC
+        OriginAccessControlOriginType: s3
+        SigningBehavior: always
+        SigningProtocol: sigv4
+
+  WebsiteBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: inflationsimulator-bucket
+
+  WebsiteBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref WebsiteBucket
+      PolicyDocument:
+        Statement:
+          - Action:
+              - s3:GetObject
+            Effect: Allow
+            Principal:
+              Service: "cloudfront.amazonaws.com"
+            Resource: !Sub "arn:aws:s3:::${WebsiteBucket}/*"
+            Condition:
+              StringEquals:
+                AWS:SourceArn: !Sub "arn:aws:cloudfront::153865120482:distribution/${CloudFrontDistribution}"
+
+  CloudFrontDistribution:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Enabled: true
+        Aliases:
+          - inflationsimulator.org
+        DefaultRootObject: index.html
+        Origins:
+          - DomainName: !Sub "inflationsimulator-bucket.s3-website-${AWS::Region}.amazonaws.com"
+            Id: S3Origin
+            CustomOriginConfig:
+              HTTPPort: 80
+              HTTPSPort: 443
+              OriginProtocolPolicy: http-only
+        PriceClass: PriceClass_200
+        DefaultCacheBehavior:
+          TargetOriginId: S3Origin
+          ViewerProtocolPolicy: redirect-to-https
+          ForwardedValues:
+            QueryString: false
+            Cookies:
+              Forward: none
+          AllowedMethods:
+            - GET
+            - HEAD
+            - OPTIONS
+        ViewerCertificate:
+          AcmCertificateArn: arn:aws:acm:us-east-1:153865120482:certificate/755eb062-fae1-4acf-bb5b-e4204fdda03f
+          MinimumProtocolVersion: TLSv1.2_2021
+          SslSupportMethod: sni-only
+
+  DNSRecord:
+    Type: AWS::Route53::RecordSet
+    Properties:
+      Name: inflationsimulator.org
+      HostedZoneId: Z03024462RFKWW1OG6DEJ
+      Type: A
+      AliasTarget:
+        HostedZoneId: Z2FDTNDATAQYW2  # Hosted Zone ID for CloudFront
+        DNSName: !GetAtt CloudFrontDistribution.DomainName
+
+Outputs:
+  WebsiteURL:
+    Value: !GetAtt WebsiteBucket.WebsiteURL
+  CloudFrontDistributionDomainName:
+    Value: !GetAtt CloudFrontDistribution.DomainName

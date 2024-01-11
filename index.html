@@ -1,0 +1,91 @@
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VRRHJQNZ13"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-VRRHJQNZ13');
+    </script>
+    <meta name="google-adsense-account" content="ca-pub-4939519708027389">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="description" content="">
+
+    <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="icon.png">
+
+    <link rel="manifest" href="site.webmanifest">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#fafafa">
+  </head>
+
+  <body>
+    <header>
+      <h1>Inflation Impact Simulator</h1>
+      <div class="inflation-description">
+        <p>
+          Inflation is the rate at which the general level of prices for goods and services is rising, and, subsequently, purchasing power is falling. Central banks attempt to limit inflation, and avoid deflation, in order to keep the economy running smoothly.
+        </p>
+        <p>
+          Think of inflation as a slow but steady erosion of your money's value. When inflation rates rise, each unit of currency buys fewer goods and services. This dynamic can have a significant impact on savings. For instance, if you have money saved and the inflation rate is higher than the interest earned on your savings, the real value of your money diminishes over time. This means that what you could buy with your savings today might be more than what you could buy in the future, even if your savings' nominal value hasn't changed. In essence, inflation can reduce the purchasing power of your savings, making it crucial to seek investment or savings avenues that offer returns at least equal to or greater than the rate of inflation.
+        </p>
+        <p>
+          Below you will find a dynamic chart that simulates the impact of inflation on your savings. You can enter the initial amount, marking the amount in the first year, the number of years in the future to simulate the impact for and the future inflation rate. The chart will show you the impact of inflation on your savings over the years.
+        </p>
+      </div>
+    </header>
+
+    <section>
+      <div id="amountInputForm">
+        <div>
+          <label for="initialAmount">Initial Amount:</label>
+          <input type="number" id="initialAmount" name="initialAmount" placeholder="Enter amount" value="50000">
+        </div>
+        <div>
+          <label for="numberOfYears">Number of Years:</label>
+          <input type="number" id="numberOfYears" name="numberOfYears" placeholder="Enter number of years" value="5">
+        </div>
+        <div>
+          <label for="futureInflation">Future Inflation (%):</label>
+          <input type="text" id="futureInflation" name="futureInflation" placeholder="Enter future inflation" value="12.1">
+        </div>
+        <div>
+          <button id="btnSubmit" type="submit">Simulate</button>
+        </div>
+      </div>
+    </section>
+
+
+    <section>
+      <div id="chartsContainer">
+        <div id="chart"></div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <a href="https://join.swissborg.com/en/r/raduJCDC" class="cta-button">Diversify Now</a>
+    </section>
+
+    <footer>
+      <p>© 2024 Inflation Simulator. All rights reserved.</p>
+    </footer>
+
+    <div id="tooltip" class="tooltip hidden"></div>
+
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
