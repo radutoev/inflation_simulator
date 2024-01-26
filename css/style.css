@@ -9,7 +9,7 @@
 
 /* ==========================================================================
    Base styles: opinionated defaults
-   ========================================================================== */
+   ========================================================================== *
 
 html {
   color: #222;
@@ -87,11 +87,27 @@ body {
   font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4;
-  color: #333;
-  line-height: 1.6;
+  background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
 }
 
+
+/* Overlay Container */
+.overlay-container {
+  background: rgba(36, 49, 64, 0.85);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  max-width: 1200px;
+  width: 90%;
+  margin: 20px auto;
+}
+.overlay-container:hover {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
 header {
   /*background-color: #007bff;*/
   /*color: #fff;*/
@@ -102,6 +118,16 @@ header {
 header h1 {
   margin: 0;
   padding-bottom: 15px;
+}
+
+.text-gradient {
+  font-size: 2.5em;
+  font-weight: bold;
+  /* Green and blue gradient for text */
+  background: -webkit-linear-gradient(left, #22c1c3, #fdbb2d, #22c1c3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 30px;
 }
 
 header p {
@@ -119,6 +145,7 @@ section {
   flex-wrap: wrap;
   justify-content: space-around;
   padding: 20px;
+  gap: 16px;
   margin-top: 20px;
 }
 
@@ -126,64 +153,82 @@ section {
 /*  margin-bottom: 10px;*/
 /*}*/
 
-@media (max-width: 768px) {
+@media (max-width: 1210px) {
   #amountInputForm {
     flex-direction: column;
-    align-items: center;
+    max-width: 90%;
+    margin: 0 auto;
+
+    button {
+      width: 100%;
+    }
+
+    input, select {
+      width: calc(100% - 16px)
+    }
   }
 }
 
 #amountInputForm label {
-  margin-right: 10px;
+  margin-right: 8px;
 }
 
 #amountInputForm input,
 #amountInputForm select {
-  padding: 10px;
-  margin-right: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #44545c; 
+    border-radius: 4px;
+    background-color: #16222a; 
+    color: #ffffff;
 }
 
 #amountInputForm button {
   padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
+  background-color: #1f2f2a; 
+  border: 2px solid #4ca2cd; 
+  font-size: 18px;
+  color: #4ca2cd;
+  border-radius: 30px;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 #amountInputForm button:hover {
-  background-color: #0056b3;
+  background-color: #4ca2cd; 
+  color: #1f2f2a; 
 }
 
 #chartsContainer {
-  background-color: white;
-  border: 1px solid #ddd;
-  padding: 10px;
+  width: 90%;
+  margin: 0 auto;
+  border: 1px solid #5d737e; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+  background-color: #16222a;
+  padding: 16px;
+  color: #ffffff; 
 }
 
 .line {
   fill: none;
-  stroke: dimgrey;
+  stroke: #38ef7d; 
   stroke-width: 2px;
 }
 .line.future {
-  stroke: salmon;
+  stroke: #11998e; 
   stroke-dasharray: 3, 3;
 }
 
 .bar {
-  fill: dimgray;
+  fill: #38ef7d;
 }
 .bar.future {
-  fill: salmon;
+  fill: #11998e; 
 }
 .axis path,
 .axis line {
   fill: none;
-  stroke: grey;
+  stroke: #5d737e;
   stroke-width: 1px;
   shape-rendering: crispEdges;
 }
@@ -191,29 +236,28 @@ section {
 .tooltip {
   position: absolute;
   pointer-events: none;
-  background-color: white;
-  border: solid 1px #000;
+  background-color: #0f2027; 
+  color: #ffffff; 
+  border: solid 1px #5d737e; 
   padding: 5px;
 }
 
 footer {
   text-align: center;
   padding: 20px;
-  background-color: #333;
-  color: white;
 }
 
 @media screen and (max-width: 600px) {
   header p, #amountInputForm label, #amountInputForm input, #amountInputForm button {
-    padding: 10px;
+    padding: 8px;
   }
 }
 
 .inflation-description {
-  width: 80%;
+  width: 90%;
   margin: auto;
-  font-size: 16px; /* Adjust font size as needed */
-  line-height: 1.6; /* This enhances readability */
+  font-size: 16px; 
+  line-height: 1.6; 
   text-align: justify;
 }
 
@@ -225,19 +269,26 @@ footer {
   align-items: center;
 }
 
-/* Basic styling for the button */
 .cta-button {
-  padding: 15px 30px; /* Larger than usual */
-  background-color: #ff9800; /* Bright orange color */
+  padding: 16px 30px;
+  background-image: linear-gradient(45deg, #11998e, #38ef7d);
   color: white;
   font-size: 18px;
   border: none;
-  border-radius: 5px;
+  border-radius: 30px;
   cursor: pointer;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+  background-image: linear-gradient(45deg, #38ef7d, #11998e);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
 }
 
 /* ==========================================================================

@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="">
+<html class="no-js" lang="en">
   <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VRRHJQNZ13"></script>
@@ -14,7 +14,8 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title></title>
+    <title>RADU_title</title>
+    <meta name="description" content="RADU_desc">
     <link rel="stylesheet" href="css/style.css">
     <meta name="description" content="">
 
@@ -33,69 +34,65 @@
   </head>
 
   <body>
-    <header>
-      <h1>Inflation Impact Simulator</h1>
+    <div class="overlay-container">
+      <header>
+        <h1 class="text-gradient">Inflation Impact Simulator</h1>
+      </header>
 
-<!--        <p>-->
-<!--          Below you will find a dynamic chart that simulates the impact of inflation on your savings. You can enter the initial amount, marking the amount in the first year, the number of years in the future to simulate the impact for and the future inflation rate. The chart will show you the impact of inflation on your savings over the years.-->
-<!--        </p>-->
-<!--      </div>-->
-    </header>
-
-    <section>
-      <div class="inflation-description">
-        <p>
-          Inflation is the rate at which the general level of prices for goods and services is rising, and, subsequently, purchasing power is falling. Central banks attempt to limit inflation, and avoid deflation, in order to keep the economy running smoothly.
-        </p>
-        <p>
-          Think of inflation as a slow but steady erosion of your money's value. When inflation rates rise, each unit of currency buys fewer goods and services. This dynamic can have a significant impact on savings.
-        </p>
-      </div>
-    </section>
-
-    <section>
-      <div id="amountInputForm">
-        <div>
-          <label for="initialAmount">Initial Amount:</label>
-          <input type="number" id="initialAmount" name="initialAmount" placeholder="Enter amount" value="50000">
+      <section>
+        <div class="inflation-description">
+          <p>
+            Inflation is the rate at which the general level of prices for goods and services is rising, and, subsequently, purchasing power is falling. Central banks attempt to limit inflation, and avoid deflation, in order to keep the economy running smoothly.
+          </p>
+          <p>
+            Think of inflation as a slow but steady erosion of your money's value. When inflation rates rise, each unit of currency buys fewer goods and services. This dynamic can have a significant impact on savings.
+          </p>
         </div>
-        <div>
-          <label for="numberOfYears">Number of Years:</label>
-          <input type="number" id="numberOfYears" name="numberOfYears" placeholder="Enter number of years" value="5">
+      </section>
+
+      <section>
+        <div id="amountInputForm">
+          <div>
+            <label for="initialAmount">Initial Amount:</label>
+            <input type="number" id="initialAmount" name="initialAmount" placeholder="Enter amount" value="50000">
+          </div>
+          <div>
+            <label for="numberOfYears">Number of Years:</label>
+            <input type="number" id="numberOfYears" name="numberOfYears" placeholder="Enter number of years" value="5">
+          </div>
+          <div>
+            <label for="futureInflation">Future Inflation (%):</label>
+            <input type="text" id="futureInflation" name="futureInflation" placeholder="Enter future inflation" value="12.1">
+          </div>
+          <div>
+            <button id="btnSubmit" type="submit">Simulate</button>
+          </div>
         </div>
-        <div>
-          <label for="futureInflation">Future Inflation (%):</label>
-          <input type="text" id="futureInflation" name="futureInflation" placeholder="Enter future inflation" value="12.1">
+      </section>
+
+      <section>
+        <div id="chartsContainer">
+          <div id="chart"></div>
         </div>
-        <div>
-          <button id="btnSubmit" type="submit">Simulate</button>
+      </section>
+
+      <section class="cta" style="margin-top: 32px;">
+        <a href="https://join.swissborg.com/en/r/raduJCDC" class="cta-button">Diversify Now</a>
+      </section>
+
+      <section>
+        <div class="inflation-description">
+          <p>
+            For instance, if you have money saved and the inflation rate is higher than the interest earned on your savings, the real value of your money diminishes over time. This means that what you could buy with your savings today might be more than what you could buy in the future, even if your savings' nominal value hasn't changed. In essence, inflation can reduce the purchasing power of your savings, making it crucial to seek investment or savings avenues that offer returns at least equal to or greater than the rate of inflation.
+          </p>
         </div>
-      </div>
-    </section>
+      </section>
+      <footer>
+        <p>© 2024 Inflation Simulator. All rights reserved.</p>
+      </footer>
 
-    <section>
-      <div id="chartsContainer">
-        <div id="chart"></div>
-      </div>
-    </section>
-
-    <section class="cta" style="margin-top: 10px;">
-      <a href="https://join.swissborg.com/en/r/raduJCDC" class="cta-button">Diversify Now</a>
-    </section>
-
-    <section>
-      <div class="inflation-description">
-        <p>
-          For instance, if you have money saved and the inflation rate is higher than the interest earned on your savings, the real value of your money diminishes over time. This means that what you could buy with your savings today might be more than what you could buy in the future, even if your savings' nominal value hasn't changed. In essence, inflation can reduce the purchasing power of your savings, making it crucial to seek investment or savings avenues that offer returns at least equal to or greater than the rate of inflation.
-        </p>
-      </div>
-    </section>
-
-
-    <footer>
-      <p>© 2024 Inflation Simulator. All rights reserved.</p>
-    </footer>
-
+    </div>
+   
     <div id="tooltip" class="tooltip hidden"></div>
 
     <script src="https://d3js.org/d3.v6.min.js"></script>
