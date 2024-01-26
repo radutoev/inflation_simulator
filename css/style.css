@@ -185,7 +185,7 @@ section {
 
 #amountInputForm button {
   padding: 10px 20px;
-  background-color: #1f4037; 
+  background-color: #1f2f2a; 
   border: 2px solid #4ca2cd; 
   font-size: 18px;
   color: #4ca2cd;
@@ -196,7 +196,7 @@ section {
 
 #amountInputForm button:hover {
   background-color: #4ca2cd; 
-  color: #1f4037; 
+  color: #1f2f2a; 
 }
 
 #chartsContainer {
